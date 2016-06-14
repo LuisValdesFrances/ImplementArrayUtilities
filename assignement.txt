@@ -1,0 +1,4 @@
+Implements array_utilities.h and array_utilities_tests.h
+in array_utilities.c and array_utilitites_tests.c
+
+Always start with test cases, and then implement the methods
