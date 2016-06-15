@@ -2,9 +2,89 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
+#include <limits.h>
 
 #include "array_utilities.h"
 
 int sum(int array[], int size){
-	return 0;
+	int index = 0;
+	int acum = 0;
+	while(index < size){
+		acum+= array[index];
+		index++;
+	}
+	return acum;
+}
+
+int max(int array[], int size){
+	int index = 0;
+	int higher = INT_MIN;
+	while(index < size){
+		if(array[index] > higher){
+			higher = array[index];
+		}
+		index++;
+	}
+	return higher;
+}
+
+int min(int array[], int size){
+	int index = 0;
+	int less = INT_MAX;
+	while(index < size){
+		if(array[index] < less){
+			less = array[index];
+		}
+		index++;
+	}
+	return less;
+}
+
+int secondMax(int array[], int size){
+	int higher = max(array, size);
+	int index = 0;
+	int secondHigher = INT_MIN;
+	while(index < size){
+		if(array[index] != higher && array[index] > secondHigher){
+			secondHigher = array[index];
+		}
+		index++;
+	}
+	return secondHigher;
+}
+
+int secondMin(int array[], int size){
+	int less = min(array, size);
+	int index = 0;
+	int secondLess = INT_MAX;
+	while(index < size){
+		if(array[index] != less && array[index] < secondLess){
+			secondLess = array[index];
+		}
+		index++;
+	}
+	return secondLess;
+}
+
+int isEqual(int first[], int second[], int size){
+	int index = 0;
+	while(index < size){
+		if(first[index] != second[index]){
+			return FALSE;
+		}
+		index++;
+	}
+	return TRUE;
+}
+
+int countOccurences(int array[], int size, int value){
+	int index = 0;
+	int ocurrences = 0;
+	while(index < size){
+		if(array[index] == value){
+			ocurrences++;
+		}
+		index++;
+	}
+	return ocurrences;
 }
