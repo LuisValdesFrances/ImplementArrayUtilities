@@ -13,6 +13,9 @@ static void test_second_max();
 static void test_second_min();
 static void test_equal();
 static void test_occurences();
+static void test_countNegatives();
+static void test_indexOf();
+static void test_clearWith();
 
 void test(){
 	test_sum();
@@ -22,6 +25,9 @@ void test(){
 	test_second_min();
 	test_equal();
 	test_occurences();
+	test_countNegatives();
+	test_indexOf();
+	test_clearWith();
 	printf("All passed!!!!");
 }
 
@@ -155,7 +161,7 @@ static void test_equal(){
 }
 
 static void test_occurences(){
-	printf("test_occurences");
+	printf("test_occurences()\n");
 
 	int input1[] = {1};
 	assert(countOccurences(input1, 1, 0) == 0);
@@ -167,6 +173,61 @@ static void test_occurences(){
 	assert(countOccurences(input3, 4, 2) == 0);
 	assert(countOccurences(input3, 4, 1) == 1);
 	assert(countOccurences(input3, 4, -1) == 2);
+}
 
+static void test_countNegatives(){
+	printf("test_countNegatives()\n");
+
+	int input1[] = {1};
+	assert(countNegatives(input1, 1) == 0);
+	int input2[] = {-1};
+	assert(countNegatives(input2, 1) == 1);
+	int input3[] = {0, -1, -2};
+	assert(countNegatives(input3, 3) == 2);
+}
+
+static void test_indexOf(){
+	printf("test_indexOf()\n");
+	int input1[] = {1};
+	assert(indexOf(input1, 1, 0) == -1);
+	assert(indexOf(input1, 1, 1) == 0);
+	int input2[] = {-1};
+	assert(indexOf(input2, 1, 0) == -1);
+	assert(indexOf(input2, 1, -1) == 0);
+	int input3[] = {1, -1, -1};
+	assert(indexOf(input3, 3, -1) == 1);
+	int input4[] = {0, 2, 3};
+	assert(indexOf(input4, 3, 3) == 2);
+}
+
+static void test_clearWith(){
+	printf("test_clearWith()\n");
+	
+	int input1[] = {1};
+	int clear = 0;
+	int index = 0;
+	clearWith(input1, 1, clear);
+	while(index < 1){
+		assert(input1[index] == clear);
+		index++;
+	}
+
+	int input2[] = {1,0};
+	clear = 1;
+	index = 0;
+	clearWith(input2, 2, clear);
+	while(index < 2){
+		assert(input2[index] == clear);
+		index++;
+	}
+
+	int input3[] = {1, -1, 2};
+	clear = -1;
+	index = 0;
+	clearWith(input3, 3, clear);
+	while(index < 3){
+		assert(input3[index] == clear);
+		index++;
+	}
 
 }

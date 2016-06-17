@@ -88,3 +88,34 @@ int countOccurences(int array[], int size, int value){
 	}
 	return ocurrences;
 }
+
+int countNegatives(int array[], int size){
+	int index = 0;
+	int acum = 0;
+	while(index < size){
+		if(array[index] < 0){
+			acum++;
+		}
+		index++;
+	}
+	return acum;
+}
+
+int indexOf(int array[], int size, int value){
+	int index = 0;
+	while(index < size){
+		if(array[index] == value){
+			return index;
+		}
+		index++;
+	}
+	return -1;
+}
+
+void clearWith(int array[], int size, int value){
+	int index = 0;
+	while(index < size){
+		array[index] = value;
+		index++;
+	}
+}
