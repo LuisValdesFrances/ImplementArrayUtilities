@@ -144,25 +144,17 @@ void insertElement(int array[], int size, int value, int position){
 
 void removeElement(int array[], int size, int position){
 	int index = 0;
-	int found = FALSE;
 	int next;
 	while(index < size){
 
-
 		if(index < size -1){
-				next = array[index +1];
+			next = array[index +1];
 		}else{
 			next = 0;
 		}
-
-		if(index == position){
+		if(index >= position){
 			
 			array[index] = next;
-			found = TRUE;
-		}else{
-			if(found == TRUE){
-				array[index] = next;
-			}
 		}
 		index++;
 	}
@@ -172,6 +164,14 @@ void copy(int source[], int destination[], int size){
 	int index = 0;
 	while(index < size){
 		destination[index] = source[index];
+		index++;
+	}
+}
+
+void merge(int first[], int firstSize, int second[], int secondSize, int result[]){
+	int index = 0;
+	while(index < firstSize){
+		//destination[index] = source[index];
 		index++;
 	}
 }
