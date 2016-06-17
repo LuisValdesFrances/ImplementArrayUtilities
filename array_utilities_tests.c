@@ -16,6 +16,9 @@ static void test_occurences();
 static void test_countNegatives();
 static void test_indexOf();
 static void test_clearWith();
+static void test_insertElement();
+static void test_removeElement();
+static void test_copy();
 
 void test(){
 	test_sum();
@@ -28,6 +31,9 @@ void test(){
 	test_countNegatives();
 	test_indexOf();
 	test_clearWith();
+	test_insertElement();
+	test_removeElement();
+	test_copy();
 	printf("All passed!!!!");
 }
 
@@ -229,5 +235,76 @@ static void test_clearWith(){
 		assert(input3[index] == clear);
 		index++;
 	}
+}
 
+static void test_insertElement(){
+	printf("test_insertElement()\n");
+	
+	int input1[] = {1};
+	insertElement(input1, 1, 0, 0);
+	assert(input1[0] == 0);
+
+	int input2[] = {1,-1, 0};
+	insertElement(input2, 3, 2, 1);
+	assert(input2[0] == 1);
+	assert(input2[1] == 2);
+	assert(input2[2] == -1);
+
+	insertElement(input2, 3, 3, 2);
+	assert(input2[0] == 1);
+	assert(input2[1] == 2);
+	assert(input2[2] == 3);
+}
+
+static void test_removeElement(){
+	printf("test_removeElement()\n");
+
+	int input1[] = {1};
+	removeElement(input1, 1, 0);
+	assert(input1[0] == 0);
+
+	int input2[] = {1,-1, 2};
+	removeElement(input2, 3, 1);
+	assert(input2[0] == 1);
+	assert(input2[1] == 2);
+	assert(input2[2] == 0);
+
+	removeElement(input2, 3, 0);
+	assert(input2[0] == 2);
+	assert(input2[1] == 0);
+	assert(input2[2] == 0);
+
+	int input3[] = {1,-1, 2, 3};
+	removeElement(input3, 4, 0);
+	assert(input3[0] == -1);
+	assert(input3[1] == 2);
+	assert(input3[2] == 3);
+	assert(input3[3] == 0);
+}
+
+static void test_copy(){
+	printf("test_copy()\n");
+	
+	int input1[] = {1};
+	int input2[] = {0};
+	int index = 0;
+	copy(input1, input2, 1);
+	while(index < 1){
+		assert(input1[index] == input2[index]);
+		index++;
+	}
+
+	int input3[] = {1, 0, -1};
+	int input4[] = {0, 0, 0};
+	index = 0;
+	copy(input3, input4, 3);
+	while(index < 1){
+		assert(input2[index] == input3[index]);
+		index++;
+	}
+	copy(input4, input3, 3);
+	while(index < 1){
+		assert(input2[index] == input3[index]);
+		index++;
+	}
 }

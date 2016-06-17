@@ -119,3 +119,60 @@ void clearWith(int array[], int size, int value){
 		index++;
 	}
 }
+
+void insertElement(int array[], int size, int value, int position){
+	int index = 0;
+	int found = FALSE;
+	int next;
+	while(index < size){
+		if(index == position){
+			next = array[index];
+			array[index] = value;
+			found = TRUE;
+		}else{
+			if(found == TRUE){
+				array[index] = next;
+				if(index < size -1){
+					next = array[index +1];
+				}
+				
+			}
+		}
+		index++;
+	}
+}
+
+void removeElement(int array[], int size, int position){
+	int index = 0;
+	int found = FALSE;
+	int next;
+	while(index < size){
+
+
+		if(index < size -1){
+				next = array[index +1];
+		}else{
+			next = 0;
+		}
+
+		if(index == position){
+			
+			array[index] = next;
+			found = TRUE;
+		}else{
+			if(found == TRUE){
+				array[index] = next;
+			}
+		}
+		index++;
+	}
+}
+
+void copy(int source[], int destination[], int size){
+	int index = 0;
+	while(index < size){
+		destination[index] = source[index];
+		index++;
+	}
+}
+

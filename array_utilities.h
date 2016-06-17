@@ -50,6 +50,7 @@ void insertElement(int array[], int size, int value, int position);
 
 // remove value at position in array
 // the other value get pushed by the insertion
+// (Luis) ()=> last value set 0
 // assume position >= 0
 // assume position < size
 void removeElement(int array[], int size, int position);
