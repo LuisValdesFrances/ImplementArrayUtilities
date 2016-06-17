@@ -19,6 +19,7 @@ static void test_clearWith();
 static void test_insertElement();
 static void test_removeElement();
 static void test_copy();
+static void test_merge();
 
 void test(){
 	test_sum();
@@ -34,6 +35,7 @@ void test(){
 	test_insertElement();
 	test_removeElement();
 	test_copy();
+	test_merge();
 	printf("All passed!!!!");
 }
 
@@ -307,4 +309,25 @@ static void test_copy(){
 		assert(input2[index] == input3[index]);
 		index++;
 	}
+}
+
+static void test_merge(){
+	printf("test_merge()\n");
+
+/*
+	int input1[] = {1};
+	int input2[] = {0};
+	int input3[] = {0, 0};
+	int index = 0;
+	merge(input1, 1, input2, 1, input3);
+	while(index < 2){
+		if(index < 1){
+
+		}
+		assert(input1[index] == input2[index]);
+		index++;
+	}
+
+	}
+	*/
 }

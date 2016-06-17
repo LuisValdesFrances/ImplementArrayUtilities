@@ -142,6 +142,7 @@ void insertElement(int array[], int size, int value, int position){
 	}
 }
 
+/*
 void removeElement(int array[], int size, int position){
 	int index = 0;
 	int next;
@@ -159,6 +160,20 @@ void removeElement(int array[], int size, int position){
 		index++;
 	}
 }
+*/
+void removeElement(int array[], int size, int position){
+	int index = position;
+	while(index < size){
+
+		if(index < size -1){
+			array[index] = array[index + 1];
+		}else{
+			array[index] = 0;
+		}
+		
+		index++;
+	}
+}
 
 void copy(int source[], int destination[], int size){
 	int index = 0;
@@ -169,10 +184,16 @@ void copy(int source[], int destination[], int size){
 }
 
 void merge(int first[], int firstSize, int second[], int secondSize, int result[]){
+	/*
 	int index = 0;
 	while(index < firstSize){
-		//destination[index] = source[index];
+		result[index] = firstSize[index];
 		index++;
 	}
+	while(index < firstSize + secondSize){
+		result[index] = secondSize[index - firstSize];
+		index++;
+	}
+	*/
 }
 
