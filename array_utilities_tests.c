@@ -20,6 +20,8 @@ static void test_insertElement();
 static void test_removeElement();
 static void test_copy();
 static void test_merge();
+static void test_reverse();
+static void test_sort();
 
 void test(){
 	test_sum();
@@ -36,17 +38,14 @@ void test(){
 	test_removeElement();
 	test_copy();
 	test_merge();
+	test_reverse();
+	test_sort();
 	printf("All passed!!!!");
 }
 
 static void test_sum(){
 	printf("test_sum()\n");
-	/*
-	int input0[10];
-	printf("Result: ");
-	printf("%d\n", sum(input0, 10));
-	assert(sum(input4, 2) == 0);
-	*/
+	
 	int input[] = {1};
 	assert(sum(input, 1) == 1);
 	int input2[] = {1, 2};
@@ -314,7 +313,7 @@ static void test_copy(){
 static void test_merge(){
 	printf("test_merge()\n");
 
-/*
+
 	int input1[] = {1};
 	int input2[] = {0};
 	int input3[] = {0, 0};
@@ -322,12 +321,92 @@ static void test_merge(){
 	merge(input1, 1, input2, 1, input3);
 	while(index < 2){
 		if(index < 1){
-
+			assert(input1[index] == input3[index]);
 		}
-		assert(input1[index] == input2[index]);
+		else{
+			assert(input2[index-1] == input3[index]);
+		}
+		
 		index++;
 	}
 
+	int input4[] = {1};
+	int input5[] = {0,1};
+	int input6[] = {0, 0, 0};
+	index = 0;
+	merge(input4, 1, input5, 2, input6);
+	while(index < 3){
+		if(index < 1){
+			assert(input4[index] == input6[index]);
+		}else{
+			assert(input5[index-1] == input6[index]);
+		}
+		index++;
 	}
-	*/
+
+	int input7[] = {1, -2, 3};
+	int input8[] = {0, 1};
+	int input9[] = {0, 0, 0, 0, 0};
+	index = 0;
+	merge(input7, 3, input8, 2, input9);
+	while(index < 5){
+		if(index < 3){
+			assert(input7[index] == input9[index]);
+		}else{
+			assert(input8[index-3] == input9[index]);
+		}
+		index++;
+	}
 }
+
+static void test_reverse(){
+	printf("test_reverse()\n");
+
+	int input1[] = {1};
+	reverse(input1, 1);
+	assert(input1[0] == 1);
+
+	int input2[] = {1,-1};
+	reverse(input2, 2);
+	assert(input2[0] == -1);
+	assert(input2[1] == 1);
+
+	reverse(input2, 2);
+	assert(input2[0] == 1);
+	assert(input2[1] == -1);
+
+	int input3[] = {1,-1, 2};
+	reverse(input3, 3);
+	assert(input3[0] == 2);
+	assert(input3[1] == -1);
+	assert(input3[2] == 1);
+}
+
+static void test_sort(){
+	printf("test_sort()\n");
+
+	int input1[] = {1};
+	sort(input1, 1, TRUE);
+	assert(input1[0] == 1);
+	sort(input1, 1, FALSE);
+	assert(input1[0] == 1);
+
+	int input2[] = {1, -1};
+	sort(input2, 2, TRUE);
+	assert(input2[0] == -1);
+	assert(input2[1] == 1);
+	sort(input2, 2, FALSE);
+	assert(input2[0] == 1);
+	assert(input2[1] == -1);
+
+	int input3[] = {1, -1, 0};
+	sort(input3, 3, TRUE);
+	assert(input3[0] == -1);
+	assert(input3[1] == 0);
+	assert(input3[2] == 1);
+	sort(input3, 3, FALSE);
+	assert(input3[0] == 1);
+	assert(input3[1] == 0);
+	assert(input3[2] == -1);
+}
+	

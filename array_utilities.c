@@ -121,46 +121,21 @@ void clearWith(int array[], int size, int value){
 }
 
 void insertElement(int array[], int size, int value, int position){
-	int index = 0;
-	int found = FALSE;
-	int next;
-	while(index < size){
-		if(index == position){
-			next = array[index];
-			array[index] = value;
-			found = TRUE;
-		}else{
-			if(found == TRUE){
-				array[index] = next;
-				if(index < size -1){
-					next = array[index +1];
-				}
-				
-			}
-		}
-		index++;
-	}
-}
+	
+	int next = array[position];
+	array[position] = value;
 
-/*
-void removeElement(int array[], int size, int position){
-	int index = 0;
-	int next;
+	int index = position +1;
+	
 	while(index < size){
-
+		array[index] = next;
 		if(index < size -1){
-			next = array[index +1];
-		}else{
-			next = 0;
-		}
-		if(index >= position){
-			
-			array[index] = next;
+			next = array[index + 1];
 		}
 		index++;
 	}
 }
-*/
+
 void removeElement(int array[], int size, int position){
 	int index = position;
 	while(index < size){
@@ -184,16 +159,59 @@ void copy(int source[], int destination[], int size){
 }
 
 void merge(int first[], int firstSize, int second[], int secondSize, int result[]){
-	/*
+	
 	int index = 0;
 	while(index < firstSize){
-		result[index] = firstSize[index];
+		result[index] = first[index];
 		index++;
 	}
 	while(index < firstSize + secondSize){
-		result[index] = secondSize[index - firstSize];
+		result[index] = second[index - firstSize];
 		index++;
 	}
-	*/
+}
+
+void reverse(int array[], int size){
+	int index = 0;
+	int aux;
+	while(index < size -1){
+		if(size > 1){
+			aux = array[index];
+			array[index] = array[size - (index + 1)];
+			array[size - (index + 1)] = aux;
+		}
+		index++;
+	}
+}
+
+void sort(int array[], int size, int asc){
+	int index1 = 0;
+	int index2 = 0;
+	int aux;
+	while(index1 < size-1){
+
+		
+		while(index2 < size-1){
+			
+			if(asc == TRUE){
+				if(array[index2] > array[index2 +1]){
+					aux = array[index2];
+					array[index2] = array[index2 +1];
+					array[index2 +1] = aux;
+				}
+			}else{
+				if(array[index2] < array[index2 +1]){
+					aux = array[index2];
+					array[index2] = array[index2 +1];
+					array[index2 +1] = aux;
+				}
+			}
+			index2++;
+		
+		}
+		index2 = 0;
+		index1++;
+
+	}
 }
 
