@@ -316,19 +316,13 @@ static void test_merge(){
 
 	int input1[] = {1};
 	int input2[] = {0};
-	int input3[] = {0, 0};
+	int input3[2];
+	int expected[] = {1,0};
+
+
 	int index = 0;
 	merge(input1, 1, input2, 1, input3);
-	while(index < 2){
-		if(index < 1){
-			assert(input1[index] == input3[index]);
-		}
-		else{
-			assert(input2[index-1] == input3[index]);
-		}
-		
-		index++;
-	}
+	assert(isEqual(input3, expected, 1));
 
 	int input4[] = {1};
 	int input5[] = {0,1};
@@ -375,11 +369,15 @@ static void test_reverse(){
 	assert(input2[0] == 1);
 	assert(input2[1] == -1);
 
-	int input3[] = {1,-1, 2};
+	int input3[]   = { 1,-1, 2};
+	int expected3[] = { 2,-1, 1};
 	reverse(input3, 3);
-	assert(input3[0] == 2);
-	assert(input3[1] == -1);
-	assert(input3[2] == 1);
+	assert(isEqual(input3, expected3, 3));
+
+	int input4[]   = { 1,-1, 2, 3};
+	int expected4[] = { 3, 2,-1, 1};
+	reverse(input4, 4);
+	assert(isEqual(input4, expected4, 4));
 }
 
 static void test_sort(){

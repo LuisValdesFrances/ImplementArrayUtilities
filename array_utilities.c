@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <assert.h>
-#include <limits.h>
 
 #include "array_utilities.h"
 
+static void swap(int *direction1, int *direction2);
+
 int sum(int array[], int size){
+	assert(size >= 0);
 	int index = 0;
 	int acum = 0;
 	while(index < size){
@@ -122,18 +124,13 @@ void clearWith(int array[], int size, int value){
 
 void insertElement(int array[], int size, int value, int position){
 	
-	int next = array[position];
-	array[position] = value;
-
-	int index = position +1;
+	int index = size - 1;
 	
-	while(index < size){
-		array[index] = next;
-		if(index < size -1){
-			next = array[index + 1];
-		}
-		index++;
+	while(index > position){
+		array[index] = array[index-1];
+		index--;
 	}
+	array[index] = value;
 }
 
 void removeElement(int array[], int size, int position){
@@ -171,15 +168,16 @@ void merge(int first[], int firstSize, int second[], int secondSize, int result[
 	}
 }
 
+static void swap(int *direction1, int *direction2){
+	int aux = *direction1;
+	*direction1 = *direction2;
+	*direction2 = aux;
+}
+
 void reverse(int array[], int size){
 	int index = 0;
-	int aux;
-	while(index < size -1){
-		if(size > 1){
-			aux = array[index];
-			array[index] = array[size - (index + 1)];
-			array[size - (index + 1)] = aux;
-		}
+	while(index < size /2){
+		swap(&array[index], &array[size - index - 1]);
 		index++;
 	}
 }
@@ -187,31 +185,23 @@ void reverse(int array[], int size){
 void sort(int array[], int size, int asc){
 	int index1 = 0;
 	int index2 = 0;
-	int aux;
-	while(index1 < size-1){
 
-		
+	while(index1 < size-1 ){
 		while(index2 < size-1){
 			
-			if(asc == TRUE){
+			if(asc){
 				if(array[index2] > array[index2 +1]){
-					aux = array[index2];
-					array[index2] = array[index2 +1];
-					array[index2 +1] = aux;
+					swap(&array[index2], &array[index2 + 1]);
 				}
 			}else{
 				if(array[index2] < array[index2 +1]){
-					aux = array[index2];
-					array[index2] = array[index2 +1];
-					array[index2 +1] = aux;
+					swap(&array[index2], &array[index2 + 1]);
 				}
 			}
 			index2++;
-		
 		}
 		index2 = 0;
 		index1++;
-
 	}
 }
 
